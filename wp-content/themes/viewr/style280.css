@@ -1028,19 +1028,32 @@ html[xmlns] .slides {display: block;}
 
 /* =Posts postinfo styling
 -------------------------------------------------------------- */
+/* Edited by Alex, Not finished. Need to edit something more to get this back to the top of the snipped */
 article .postinfo {
-	display:block;
+	
 	width:50px;
 	height:80px;
 	background-color:#292929;
-	position:absolute;
-	top:0;
-	left:0;
+
 	font-size:10px;
 	color:#00c3e3;
 	text-align:center;
 	text-transform:uppercase;
 	font-weight:normal;
+
+	/* Original CSS */
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	
+	/* Alex CSS */
+	/*display: inline;
+	position: relative;
+	float: right;
+	margin-left: 5px;
+	margin-bottom: 5px;*/
+
 }
 article .postinfo .pitop {
 	display:block;
@@ -1294,6 +1307,9 @@ article.span9 .cattag a:hover {
 
 article.span3 {
 	position:relative;
+
+	/* Alex CSS */
+	min-height: 200px;
 }
 article.span3 h2 {
 	font-family: 'Open Sans', sans-serif;

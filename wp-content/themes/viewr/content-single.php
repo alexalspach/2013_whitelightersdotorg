@@ -8,10 +8,37 @@
  */
 ?>
 
+<!--
+	** Problem:
+	* The VIEW:R WordPress theme is designed to require a thumbnail for ever post. 
+	When a post exerpt is available on a page, for instance the archives page, 
+	the picture is shown with the post date or review rating displayed over the thumbnail.
+	This style is nice, but if a thumbnail is not used, the date/rating is instead displayed
+	over the title and blurb text from the post.
+	
+	** Solution:
+	* Moved postinfo div into the if statement determining whether or not a thumbnail was used.
+	* Created an else clause to produce the same date/rating box but with added css style overrides 
+	to display it inline with the text and with nice looking margins.
+	* This same statement is reproduced for all span sizes
+	
+	** Status: Untested
+	
+	** Alex: alexalspach@gmail.com
+-->
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<div class="entry-content">
-    	<?php if ( has_post_thumbnail() ) { ?><div class="singlethumb"><div class="postinfo"><?php get_rateorpostdate(); ?></div><?php the_post_thumbnail('ca_thumb-large', array('title' => get_the_title(), 'class' => "singlepostimg", )); ?></div><?php } ?>
+    	<?php if ( has_post_thumbnail() ) { ?>
+			<div class="singlethumb"><div class="postinfo"><?php get_rateorpostdate(); ?></div>
+			<?php the_post_thumbnail('ca_thumb-large', array('title' => get_the_title(), 'class' => "singlepostimg", )); ?>
+			</div>
+		<?php } 
+		else { ?>
+			<div style="display: inline; position: relative; float: left; margin-bottom: 5px; margin-right: 10px;" class="postinfo"><?php get_rateorpostdate(); ?></div>
+		<?php } ?>
+		
         <h1><?php the_title(); ?></h1>
         <hr class="caline" />
 		<?php the_content(); ?>
